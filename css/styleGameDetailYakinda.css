@@ -1,0 +1,694 @@
+/* Genel Ayarlar ve Renk Değişkenleri */
+:root {
+    --color-primary: #3A0CA3; /* Derin Mor */
+    --color-accent: #00F5D4; /* Parlak Turkuaz */
+    --color-bg-primary: #1A032E; /* Koyu Lacivert */
+    --color-bg-secondary: #121212; /* Siyahımsı Gri (Kart Arka Planları) */
+    --color-text-light: #E0E0E0; /* Açık Gri Metin */
+    --color-text-medium: #888888; /* Orta Gri Metin/İkon */
+
+    --font-primary: 'Georgia', sans-serif; /* Oyun sitesi için daha karakterli fontlar bulacağız */
+    --font-heading: 'Oswald', sans-serif; /* Başlıklar için daha vurucu bir font */
+
+    --spacing-unit: 1rem; /* Temel boşluk birimi */
+}
+
+/* Sıfırlama ve Temel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-unit);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-text-light);
+}
+
+/* Buton Temelleri */
+.cta-button, .explore-button, .read-more, .learn-more-button, .newsletter-form button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover, .explore-button:hover, .read-more:hover, .learn-more-button:hover, .newsletter-form button:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 80%, var(--color-accent)); /* Moru biraz turkuazla karıştır */
+    transform: translateY(-2px); /* Hafif yukarı kalkma efekti */
+}
+
+/* Header */
+.main-header {
+    background-color: var(--color-bg-primary);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo img {
+    height: 50px; /* Logonun yüksekliği */
+}
+
+.main-nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav .nav-links a {
+    color: var(--color-text-light);
+    font-weight: bold;
+    position: relative;
+}
+
+.main-nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle { /* Mobil menü butonu */
+    display: none; /* Varsayılan olarak gizli */
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Ekran yüksekliğinin %90'ı */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Videonun tüm alanı kaplamasını sağlar */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(26, 3, 46, 0.5), rgba(26, 3, 46, 0.8)); /* Mor-siyah degrade */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-text-light);
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-accent); /* Sloganı vurgulayalım */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Sosyal Medya Şeridi */
+.social-media-strip {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.social-icon img {
+    height: 40px;
+    width: 40px;
+    filter: invert(1); /* İkonlar beyazlaşsın */
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: translateY(-5px);
+    filter: brightness(0) saturate(100%) invert(43%) sepia(93%) saturate(1900%) hue-rotate(240deg) brightness(80%) contrast(100%); /* Mor veya turkuaz tonuna dönsün */
+}
+
+
+/* Haberler ve Oyun Kartları Bölümleri (Tekrar Eden Yapılar) */
+.latest-news, .our-games-showcase, .about-us-summary, .newsletter-signup {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.latest-news h2, .our-games-showcase h2, .about-us-summary h2, .newsletter-signup h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-accent);
+}
+
+.news-cards, .game-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Duyarlı grid */
+    gap: 2rem;
+    justify-content: center;
+}
+
+.news-card, .game-card {
+    background-color: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover, .game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.news-card img, .game-card img {
+    width: 100%;
+    height: 180px; /* Sabit yükseklik */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.news-card h3, .game-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-light);
+}
+
+.news-card p, .game-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+    margin-bottom: 1rem;
+}
+
+.read-more, .explore-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1rem;
+}
+
+/* Hakkımızda Özeti */
+.about-us-summary p {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+/* Bülten Kayıt Formu */
+.newsletter-signup form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.newsletter-signup input[type="email"] {
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--color-text-medium);
+    border-radius: 5px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-light);
+    font-size: 1rem;
+    width: 300px;
+    max-width: 80%;
+}
+
+.newsletter-signup input[type="email"]::placeholder {
+    color: var(--color-text-medium);
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-primary); /* Ayaklık mor olsun */
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--color-text-light);
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: var(--color-accent);
+}
+
+
+/*----------------------------------------------------*/
+/* Yakında Çıkacak Oyun Detay Sayfası Stilleri (upcoming-game-detail.html) */
+/*----------------------------------------------------*/
+
+.upcoming-game-hero {
+    background: linear-gradient(rgba(30, 20, 60, 0.85), rgba(15, 10, 30, 0.95)), url('../images/upcoming/upcoming-hero-detail-bg.jpg') no-repeat center center/cover;
+    /* Daha derin, gizemli mor-lacivert bir degrade ve arkaplan görseli */
+    padding: 7rem 0 5rem;
+    text-align: center;
+    color: var(--color-text-light);
+    position: relative;
+    overflow: hidden;
+    /* Hero bölümüne hafif bir animasyon ekleyebiliriz */
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.upcoming-game-hero h1 {
+    font-size: 4.8rem; /* Daha büyük, etkileyici başlık */
+    margin-bottom: 1rem;
+    color: var(--color-accent-primary); /* Vurgu renginde başlık */
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.7);
+    line-height: 1.1;
+}
+
+.upcoming-game-hero .tagline {
+    font-size: 1.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 3.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.wishlist-cta {
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.wishlist-cta p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.wishlist-cta .btn-large {
+    font-size: 1.3rem;
+    padding: 1.2rem 2.5rem;
+    margin: 0 1rem 1rem; /* Butonlar arası boşluk */
+}
+
+.upcoming-game-info {
+    padding: 5rem 0;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-medium);
+}
+
+.info-overview, .concept-art-gallery, .development-updates, .faq-section, .system-requirements-preview {
+    background-color: var(--color-bg-secondary);
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    margin-bottom: 4rem; /* Bölümler arası boşluk */
+}
+
+.info-overview h2, .concept-art-gallery h2, .development-updates h2, .faq-section h2, .system-requirements-preview h2 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-accent-primary);
+    padding-bottom: 0.8rem;
+    text-align: center;
+}
+
+.info-overview p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+}
+
+.info-overview .game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8rem 3rem;
+    margin-top: 2.5rem;
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+    justify-content: center; /* Ortalamak için */
+}
+
+.info-overview .game-meta span i {
+    color: var(--color-accent-secondary);
+    margin-right: 0.8rem;
+}
+
+.concept-art-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2rem;
+}
+
+.concept-art-gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.concept-art-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.concept-art-gallery .gallery-note {
+    font-size: 0.9rem;
+    color: var(--color-text-light-alt); /* Daha soluk bir renk */
+    margin-top: 2rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.development-updates p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.development-updates .btn-tertiary {
+    background-color: var(--color-primary); /* Koyu lacivert buton */
+    color: var(--color-text-light);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Ortalamak için */
+    margin-top: 1rem;
+}
+
+.development-updates .btn-tertiary:hover {
+    background-color: var(--color-accent-secondary);
+}
+
+/* Accordion (SSS) Stilleri */
+.accordion {
+    max-width: 800px;
+    margin: 2rem auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    background-color: var(--color-bg-primary); /* Açılır başlık arka planı */
+    color: var(--color-primary);
+    padding: 1.5rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    padding-right: 4rem; /* Ok ikonu için boşluk */
+}
+
+.accordion-header:hover {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-accent-primary);
+}
+
+.accordion-header::after {
+    content: '\f078'; /* Font Awesome chevron-down ikonu */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-header::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion-content {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-medium);
+    padding: 0 2rem;
+    max-height: 0; /* Başlangıçta gizli */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 200px; /* İçeriğe göre ayarlanacak, JS ile de dinamik ayarlanabilir */
+    padding: 1.5rem 2rem;
+}
+
+.accordion-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Sistem gereksinimleri için mevcut .requirements-grid ve .req-item sınıflarını kullanıyoruz */
+.system-requirements-preview h2 {
+    font-size: 2.5rem; /* Biraz daha küçük başlık */
+}
+
+
+/* Medya Sorguları - Yakında Çıkacak Oyun Detay Sayfası İçin */
+@media (max-width: 992px) {
+    .upcoming-game-hero h1 {
+        font-size: 3.8rem;
+    }
+    .upcoming-game-hero .tagline {
+        font-size: 1.6rem;
+    }
+    .wishlist-cta {
+        padding: 2rem 2.5rem;
+    }
+    .wishlist-cta p {
+        font-size: 1.1rem;
+    }
+    .wishlist-cta .btn-large {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        margin: 0.8rem;
+    }
+    .info-overview, .concept-art-gallery, .development-updates, .faq-section, .system-requirements-preview {
+        padding: 2.5rem;
+    }
+    .info-overview h2, .concept-art-gallery h2, .development-updates h2, .faq-section h2, .system-requirements-preview h2 {
+        font-size: 2.5rem;
+    }
+    .concept-art-gallery .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .concept-art-gallery img {
+        height: 180px;
+    }
+    .accordion-header {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+    }
+    .accordion-content {
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .upcoming-game-hero h1 {
+        font-size: 3rem;
+    }
+    .upcoming-game-hero .tagline {
+        font-size: 1.3rem;
+    }
+    .wishlist-cta {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+    .wishlist-cta p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .wishlist-cta .btn-large {
+        display: block; /* Mobil'de butonları alt alta */
+        width: calc(100% - 2rem); /* Padding'i hesaba kat */
+        margin: 0.5rem auto; /* Ortala ve boşluk bırak */
+    }
+    .info-overview h2, .concept-art-gallery h2, .development-updates h2, .faq-section h2, .system-requirements-preview h2 {
+        font-size: 2rem;
+    }
+    .info-overview p {
+        font-size: 1rem;
+    }
+    .info-overview .game-meta {
+        justify-content: flex-start; /* Mobil'de sola hizala */
+        gap: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .concept-art-gallery .gallery-grid {
+        grid-template-columns: 1fr; /* Mobil'de tek sütun */
+    }
+    .concept-art-gallery img {
+        height: auto; /* Yüksekliği otomatik ayarla */
+    }
+    .development-updates .btn-tertiary {
+        width: calc(100% - 2rem);
+    }
+    .accordion-header {
+        font-size: 1rem;
+        padding-right: 3rem;
+    }
+    .accordion-header::after {
+        right: 1.5rem;
+    }
+    .accordion-content {
+        padding: 0.8rem 1.5rem;
+    }
+    .system-requirements-preview .requirements-grid {
+        grid-template-columns: 1fr; /* Mobil'de tek sütun */
+    }
+}
+
+@media (max-width: 480px) {
+    .upcoming-game-hero {
+        padding: 3rem 0;
+    }
+    .upcoming-game-hero h1 {
+        font-size: 2.2rem;
+    }
+    .upcoming-game-hero .tagline {
+        font-size: 0.95rem;
+    }
+    .wishlist-cta {
+        padding: 1rem;
+    }
+    .wishlist-cta p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .wishlist-cta .btn-large {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+        margin: 0.5rem auto;
+    }
+    .info-overview, .concept-art-gallery, .development-updates, .faq-section, .system-requirements-preview {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+    .info-overview h2, .concept-art-gallery h2, .development-updates h2, .faq-section h2, .system-requirements-preview h2 {
+        font-size: 1.8rem;
+    }
+    .accordion-header {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    .accordion-header::after {
+        right: 1rem;
+    }
+    .accordion-content {
+        padding: 0.5rem 1rem;
+    }
+    .accordion-content p {
+        font-size: 0.9rem;
+    }
+}

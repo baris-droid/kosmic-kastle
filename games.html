@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyunlar - Kozmic Kale</title>
+    <link rel="stylesheet" href="css/styleOyun.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body id="games-page-body">
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/kozmic-kale-logo.jpeg" alt="Kozmic Kale Logo">
+            </a>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Menüyü Aç/Kapat">☰</button>
+                <ul class="nav-links">
+                    <li><a href="games.html" class="active">Oyunlar</a></li> 
+					<li><a href="about.html">Hakkımızda</a></li>
+                    <li><a href="news.html">Haberler</a></li>
+                    <li><a href="careers.html">Kariyer</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="games-hero">
+            <div class="container">
+                <h1>Kozmic Kale Oyun Evreni</h1>
+                <p class="tagline">Keşfedilmeyi bekleyen destanlar!</p>
+            </div>
+        </section>
+
+        <section class="games-category-section container">
+            <div class="category-tabs">
+                <button class="tab-button active" data-category="released">Çıkan Oyunlar</button>
+                <button class="tab-button" data-category="upcoming">Yaklaşan Oyunlar</button>
+            </div>
+
+            <div id="released-games" class="games-grid category-content active">
+                <article class="game-item-card">
+                    <img src="images/games/game1-cover-kd.jpg" alt="Kozmik Destan Kapak">
+                    <div class="card-content">
+                        <h2>Vidanjör</h2>
+                        <p class="type">Macera-Korku</p>
+                        <p>Efsanenin başladığı yer. Derin hikayesi ve sürükleyici oynanışıyla oyuncuların kalbini kazanan ilk destanımız.</p>
+                        <span class="status released-status">Oynanabilir</span>
+                        <a href="game-detail-kd.html" class="detail-button">Detayları Keşfet</a>
+                    </div>
+                </article>
+            </div>
+
+            <div id="upcoming-games" class="games-grid category-content" >
+                <article class="game-item-card">
+                    <img src="images/games/game2-cover-kd2.jpg" alt="Kozmik Destan 2 Kapak">
+                    <div class="card-content">
+                        <h2>Vidanjör: Become</h2>
+                        <p class="type">Macera-Korku</p>
+                        <p>Macera devam ediyor! Yenilenmiş mekanikler, canavarın neden ve nasıl var olduğunu anlamak ve soluk kesen bir hikaye ile çok yakında!</p>
+                        <span class="status upcoming-status">Geliştirme Aşamasında</span>
+                        <a href="game-detail-kd2.html" class="detail-button">Detayları Keşfet</a>
+                    </div>
+                </article>
+
+                <article class="game-item-card">
+                    <img src="images/games/game3-cover-nova.jpg" alt="Proje Nova Kapak">
+                    <div class="card-content">
+                        <h2>Proje Nova</h2>
+                        <p class="type">Macera-Aksiyon</p>
+                        <p>Pixel grafiklerle eski katana ustasının hayatını keşfedin!</p>
+                        <span class="status upcoming-status">Geliştirme Aşamasında</span>
+                        <a href="game-detail-nova.html" class="detail-button">Detayları Keşfet</a>
+                    </div>
+                </article>
+
+                <article class="game-item-card">
+                    <img src="images/games/game4-cover-x.jpg" alt="Gizli Proje X Kapak">
+                    <div class="card-content">
+                        <h2>Gizli Proje X</h2>
+                        <p class="type">Ekip Oyunu</p>
+                        <p>Sır perdesi yakında aralanacak..!</p>
+                        <span class="status announced-status">Duyuruldu</span>
+                        <a href="game-detail-x.html" class="detail-button">Detayları Keşfet</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Kozmic Kale. Tüm Hakları Saklıdır.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Gizlilik Politikası</a>
+                <a href="cookie-policy.html">Çerez Politikası</a>
+            </div>
+        </div>
+    </footer>
+	
+	<script src="js/script.js"></script>
+</body>
+</html>
